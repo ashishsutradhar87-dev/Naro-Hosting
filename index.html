@@ -1,94 +1,547 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Naro Hosting</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-    * {
-  margin: 0;
-  padding: 0;
-  box-size: border-box;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-body {
-      font-family: "Poppins", sans-serif;
-      background: #0f172a;
-      color: white;
-}
+        body {
+            font-family: "Poppins", sans-serif;
+            background: #0f172a;
+            color: white;
+            line-height: 1.6;
+        }
 
-nav {
-      width: 100%;
-      padding: 1rem 5%;
-      background: rgba(255, 255, 255, 0.05);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      backrop-filter: blur(15px);
-      margin-bottom: 2rem;
-      
-      display: flex;
-      align-items: center;
-      Justify-content: space-between;
-}
+        /* Navigation */
+        nav {
+            width: 100%;
+            padding: 1rem 5%;
+            background: rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
 
-.logo {
-       font-size: 1.8rem;
-       font-weight: 700;
-       color: #38bdf8;
-       letter-spacing: 1px;
-}
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #38bdf8;
+            letter-spacing: 1px;
+        }
 
-.nav-links {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-}
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
 
-.nav-links li a {
-      position: relative;
-      font-size: 1.05rem;
-      font-weight: 500;
-      text-decoration: none;
-      color: #e2e8f0;
-      transition: 0.3s;
-}
+        .nav-links li a {
+            position: relative;
+            font-size: 1.05rem;
+            font-weight: 500;
+            text-decoration: none;
+            color: #e2e8f0;
+            transition: 0.3s;
+        }
 
-.nav-links li a:hover {
-  color: #38bdf8;
-}
+        .nav-links li a:hover {
+            color: #38bdf8;
+        }
 
-.btns {
-  display: flex;
-}
+        .btns {
+            display: flex;
+            gap: 1rem;
+        }
 
-.btn{
-  padding: 0.5rem 1.5rem;
-  border-radius: 30px;
-  font-weight: 600;
-  font-size: 1rem;
-  background: #38bdf8;
-  color: #0f172a;
-  border: none;
-  cursor: pointer;
-  transition: 0.3s;
-}
+        .btn {
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1rem;
+            background: #38bdf8;
+            color: #0f172a;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
 
-.btn:hover {
-  background: #0aa9f3;
-}
-        </style>
+        .btn:hover {
+            background: #0aa9f3;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid #38bdf8;
+            color: #38bdf8;
+        }
+
+        .btn-outline:hover {
+            background: rgba(56, 189, 248, 0.1);
+        }
+
+        /* Mobile Navigation */
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 8rem 5% 5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, #38bdf8, #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin-bottom: 2rem;
+            color: #cbd5e1;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 5rem 5%;
+            background: #1e293b;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #38bdf8;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: #38bdf8;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: #cbd5e1;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 5rem 5%;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: transform 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .pricing-card.popular {
+            border: 2px solid #38bdf8;
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: #38bdf8;
+            color: #0f172a;
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border-bottom-left-radius: 10px;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #38bdf8;
+        }
+
+        .price span {
+            font-size: 1rem;
+            color: #cbd5e1;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+
+        /* Footer */
+        footer {
+            background: #1e293b;
+            padding: 3rem 5% 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: #38bdf8;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: #cbd5e1;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #38bdf8;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            color: #cbd5e1;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            background: #38bdf8;
+            color: #0f172a;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: rgba(15, 23, 42, 0.95);
+                backdrop-filter: blur(15px);
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                gap: 1.5rem;
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+                transition: 0.5s;
+            }
+
+            .nav-links.active {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero-btns {
+                flex-direction: column;
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .hero-btns .btn {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .features-grid,
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-<nav>
-<div class="logo">Naro Hosting</div>
-<ul class="nav-links">
-<li><a href="#">Game Servers</a></li>
-<li><a href="#">Other Servers</a></li>
-<li><a href="#">Learn</a></li>
-<li><a href="#">Support</a></li>
-</ul>
-<div class="btns">
-<button class="btn">Login</button>
-</div>
-</nav>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Naro Hosting</div>
+        <ul class="nav-links">
+            <li><a href="#">Game Servers</a></li>
+            <li><a href="#">Other Servers</a></li>
+            <li><a href="#">Learn</a></li>
+            <li><a href="#">Support</a></li>
+        </ul>
+        <div class="btns">
+            <button class="btn-outline">Sign Up</button>
+            <button class="btn">Login</button>
+        </div>
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Powerful Hosting Solutions</h1>
+        <p>Experience lightning-fast performance with our premium hosting services. From game servers to web hosting, we've got you covered.</p>
+        <div class="hero-btns">
+            <button class="btn">Get Started</button>
+            <button class="btn-outline">Learn More</button>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <h2 class="section-title">Why Choose Naro Hosting?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3>Lightning Fast</h3>
+                <p>Our servers are optimized for maximum performance with minimal latency.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Secure & Reliable</h3>
+                <p>Advanced security measures to keep your data safe and services running 24/7.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <h3>24/7 Support</h3>
+                <p>Our expert support team is available around the clock to assist you.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing">
+        <h2 class="section-title">Our Pricing Plans</h2>
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3>Starter</h3>
+                <div class="price">$9.99<span>/month</span></div>
+                <ul class="pricing-features">
+                    <li>1 Game Server</li>
+                    <li>10 Player Slots</li>
+                    <li>50GB Storage</li>
+                    <li>Basic Support</li>
+                </ul>
+                <button class="btn-outline">Select Plan</button>
+            </div>
+            <div class="pricing-card popular">
+                <div class="popular-badge">Most Popular</div>
+                <h3>Professional</h3>
+                <div class="price">$19.99<span>/month</span></div>
+                <ul class="pricing-features">
+                    <li>3 Game Servers</li>
+                    <li>30 Player Slots</li>
+                    <li>200GB Storage</li>
+                    <li>Priority Support</li>
+                    <li>DDoS Protection</li>
+                </ul>
+                <button class="btn">Select Plan</button>
+            </div>
+            <div class="pricing-card">
+                <h3>Enterprise</h3>
+                <div class="price">$39.99<span>/month</span></div>
+                <ul class="pricing-features">
+                    <li>10 Game Servers</li>
+                    <li>Unlimited Player Slots</li>
+                    <li>1TB Storage</li>
+                    <li>24/7 Premium Support</li>
+                    <li>Advanced DDoS Protection</li>
+                </ul>
+                <button class="btn-outline">Select Plan</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Naro Hosting</h3>
+                <p>Providing premium hosting solutions for gamers and developers worldwide.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Game Servers</a></li>
+                    <li><a href="#">Web Hosting</a></li>
+                    <li><a href="#">VPS Hosting</a></li>
+                    <li><a href="#">Dedicated Servers</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Support</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Knowledge Base</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Status</a></li>
+                    <li><a href="#">Community</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Company</h3>
+                <ul class="footer-links">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 Naro Hosting. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>
