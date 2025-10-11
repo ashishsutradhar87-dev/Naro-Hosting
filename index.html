@@ -386,6 +386,53 @@
                 grid-template-columns: 1fr;
             }
         }
+
+
+        /* Game Slots Section */
+.game-slots {
+    padding: 5rem 5%;
+    background: #0f172a;
+}
+
+.slots-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.slot-card {
+    background: #000;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.slot-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(56, 189, 248, 0.5);
+}
+
+.slot-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+}
+
+.slot-name {
+    padding: 1rem;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.1rem;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
     </style>
 </head>
 <body>
@@ -417,6 +464,38 @@
         </div>
     </section>
 
+
+        <!-- Game Slots Section -->
+    <section class="game-slots">
+        <h2 class="section-title">Our Game Slots</h2>
+        <div class="slots-container">
+            <div class="slot-card">
+                <img src="https://via.placeholder.com/300x180/1e293b/38bdf8?text=Minecraft" alt="Minecraft" class="slot-image">
+                <div class="slot-name">Minecraft</div>
+            </div>
+            <div class="slot-card">
+                <img src="https://via.placeholder.com/300x180/1e293b/38bdf8?text=Counter-Strike" alt="Counter-Strike" class="slot-image">
+                <div class="slot-name">Counter-Strike</div>
+            </div>
+            <div class="slot-card">
+                <img src="https://via.placeholder.com/300x180/1e293b/38bdf8?text=Valorant" alt="Valorant" class="slot-image">
+                <div class="slot-name">Valorant</div>
+            </div>
+            <div class="slot-card">
+                <img src="https://via.placeholder.com/300x180/1e293b/38bdf8?text=Rust" alt="Rust" class="slot-image">
+                <div class="slot-name">Rust</div>
+            </div>
+            <div class="slot-card">
+                <img src="https://via.placeholder.com/300x180/1e293b/38bdf8?text=ARK" alt="ARK" class="slot-image">
+                <div class="slot-name">ARK: Survival Evolved</div>
+            </div>
+            <div class="slot-card">
+                <img src="https://via.placeholder.com/300x180/1e293b/38bdf8?text=Among+Us" alt="Among Us" class="slot-image">
+                <div class="slot-name">Among Us</div>
+            </div>
+        </div>
+    </section>
+    
     <!-- Features Section -->
     <section class="features">
         <h2 class="section-title">Why Choose Naro Hosting?</h2>
